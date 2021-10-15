@@ -121,40 +121,74 @@ class _QuoteAppState extends State<QuoteApp> {
     return MaterialApp(
       home: Scaffold(
         body: Container(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Container(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Expanded(
+                child: Center(
+                  child: Container(
                     height: 200,
-                    width: 400,
-                    color: Colors.blue,
-                    margin: EdgeInsets.all(20),
-                    child: Center(child: Text(_Quotes[(index % _Quotes.length)]))),
-                Divider(
-                  thickness: 1.5,
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 18.0),
-                  child: FlatButton.icon(
-                    color: Colors.grey.shade600,
-                    onPressed: _showQuote,
-                    icon: Icon(
-                      Icons.wb_sunny,
-                      color: Colors.white70,
-                    ),
-                     label: Text('Insipral me!',
-                        style: TextStyle(
-                          color: Colors.white54,
+                    width: 350,
+                    // color: Colors.transparent,
+                    margin: EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10.5),
+                        color: Colors.orange.shade100,
+                        border: Border.all(
+                          width: 1,
+                          color: Colors.black,
                         )),
+                    child: Center(
+                      child: Padding(
+                        padding: const EdgeInsets.all(7.0),
+                        child: Text(
+                          _Quotes[(index % _Quotes.length)],
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 13,
+                            fontStyle: FontStyle.italic,
+                            wordSpacing: 1.1,
+                            letterSpacing: 1.0,
+                          ),
+                        ),
+                      ),
+                    ),
                   ),
-                )
-              ],
-            ),
+                ),
+              ),
+
+              /// Creating and horizontal Line
+              Divider(
+                thickness: 1.5,
+              ),
+
+              ///Working with the Buttoning Season Using FlatButton
+              Padding(
+                padding: const EdgeInsets.only(top: 18.0),
+                child: FlatButton.icon(
+                  color: Colors.grey.shade600,
+                  onPressed: _showQuote,
+                  icon: Icon(
+                    Icons.wb_sunny,
+                    color: Colors.white,
+                  ),
+                  label: Text('Insipral me!',
+                      style: TextStyle(
+                        color: Colors.white70,
+                      )),
+                ),
+              ),
+
+              ///Given The Widget bottom Spacing i.e pushing the Widgets up
+              Spacer(),
+            ],
           ),
         ),
+      ),
     );
   }
 
+///Method to be invoke when the flatButton is pressed.
   void _showQuote() {
     setState(() {
       index++;
